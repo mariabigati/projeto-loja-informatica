@@ -1,4 +1,8 @@
-export abstract class Pessoa {
+export interface IPessoa {
+  mostrarDados(): string;
+}
+
+export abstract class Pessoa implements IPessoa {
   protected _nome: string = "";
   protected _cpf: string = "";
   protected _email: string = "";
@@ -24,7 +28,7 @@ export abstract class Pessoa {
     return this._email;
   }
 
-  public get DataNasc() {
+   public get DataNasc() {
     return this._dataNasc;
   }
 
@@ -45,8 +49,9 @@ export abstract class Pessoa {
   }
 
   public set DataNasc(value: string) {
-    this._validarDataNasc(value);
-    this._dataNasc = value;
+  this._validarDataNasc(value);
+  this._dataNasc = value;
+
   }
 
   private _validarNome(value: string): void {
@@ -76,32 +81,37 @@ export abstract class Pessoa {
 
   private _validarCpf(value: string): void {
     if (!value) {
-      throw new Error("Por favor, envie um CPF!");
+        throw new Error("Por favor, envie um CPF!");
     }
 
     if (isNaN(Number(value))) {
-      throw new Error("CPF contém caractéres inválidos.");
+        throw new Error ("CPF contém caractéres inválidos.")
     }
 
-    if (value.length < 11 || value.length > 11) {
-      throw new Error("CPF não pode ter menos de 11 dígitos!");
+    if(value.length < 11 || value.length > 11) {
+        throw new Error("CPF não pode ter menos de 11 dígitos!")
     }
   }
 
-  private _validarDataNasc(value: string): void {
+  private _validarDataNasc(value: string | any): void {
     const regex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
 
-    if (!value || !regex.test(value.toLowerCase().trim())) {
-      throw new Error("Por favor, envie uma data de nascimento válida!");
-    }
+    //verificar esse regex, errorMessage: value.toLowerCase is not a function no insomnia
 
-    const dataAtualAno = new Date().getFullYear();
-    const dataNascAno = new Date(value).getFullYear();
+     if(!value || !regex.test(value.toLowerCase().trim())) {
+        throw new Error("Por favor, envie uma data de nascimento válida!");
+     }
 
-    if (dataAtualAno - dataNascAno < 18) {
-      throw new Error(
-        "Pessoas com menos de 18 anos não podem ser cadastradas!",
-      );
-    }
+     const dataAtualAno = new Date().getFullYear();
+     const dataNascAno = new Date(value).getFullYear();
+
+     if (dataAtualAno - dataNascAno < 18) {
+        throw new Error ("Pessoas com menos de 18 anos não podem ser cadastradas!")
+     }
+  }
+  
+   public mostrarDados(): string {
+     console.log(`nome mostrar dados pessoa model: ${this._nome}`);
+    return `nome: ${this._nome}, cpf: ${this._cpf} email: ${this._email}`;
   }
 }

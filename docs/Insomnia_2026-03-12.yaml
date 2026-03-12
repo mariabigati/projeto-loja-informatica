@@ -1,0 +1,298 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: S1_R3_R -AT3_PBE 2
+meta:
+  id: wrk_f9ae3099146a42ca9e25a64122ba4ba1
+  created: 1773322721958
+  modified: 1773322721958
+  description: ""
+collection:
+  - name: Clientes
+    meta:
+      id: fld_0ed76fa8627d46708e1dc5bc92a175fd
+      created: 1772798380459
+      modified: 1773322759601
+      sortKey: -1772798380459
+      description: ""
+    children:
+      - url: localhost:8000/clientes
+        name: SELECT
+        meta:
+          id: req_f0340da97aa7499fa07b57d88900d00f
+          created: 1772798384335
+          modified: 1773323759969
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/clientes
+        name: INSERT
+        meta:
+          id: req_6b3faa4603b743eca9e4debbc8a8d7eb
+          created: 1772798397674
+          modified: 1773322773590
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Mwa",
+            	"email": "mari@mari.com",
+            	"matricula": "MATRICULA1",
+            	"curso": "AAA",
+            	"mediaFinal": 0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/clientes
+        name: UPDATE
+        meta:
+          id: req_81248ee9f37144f7890562a3ac7cfa4e
+          created: 1772798411450
+          modified: 1773322777818
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Wagner Moura",
+            	"email": "email@algo.com",
+            	"matricula": "29JFMAER95",
+            	"curso": "DES-MH3",
+            	"mediaFinal": 5
+            }
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/clientes
+        name: DELETE
+        meta:
+          id: req_f43dd070f6444331b42534c3beda85fe
+          created: 1772798423369
+          modified: 1773322781625
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Vendedores
+    meta:
+      id: fld_7f2eafd5b46c4365922a0c31d4647840
+      created: 1772798575651
+      modified: 1773322741324
+      sortKey: -1772495352257.5
+      description: ""
+    children:
+      - url: localhost:8000/professores
+        name: SELECT
+        meta:
+          id: req_7a1ba73987314d6984eb0f52592dd389
+          created: 1772798575656
+          modified: 1772800948155
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/professores
+        name: INSERT
+        meta:
+          id: req_dc2da27d9da14163bdd1b11724aaec37
+          created: 1772798575661
+          modified: 1772801159800
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Izaias",
+            	"email": "Izaias@izaiasgmail.com",
+            	"disciplina": "PBE-2",
+            	"cargaHoraria": 0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/professores
+        name: UPDATE
+        meta:
+          id: req_fcbb737c9fed46d8b973dd0fc5e88632
+          created: 1772798575667
+          modified: 1772801005807
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "",
+            	"email": "",
+            	"disciplina": "",
+            	"cargaHoraria": 1
+            }
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/professores
+        name: DELETE
+        meta:
+          id: req_76b1e7f09c66425aa1de9415f377e278
+          created: 1772798575673
+          modified: 1772800984401
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f13dd46d05dd44618af0661565e76ef1
+    created: 1772798369493
+    modified: 1772798369493
+environments:
+  name: Base Environment
+  meta:
+    id: env_67aa7fd60c9940a98dec28ad828ce585
+    created: 1772798369488
+    modified: 1772798369488
+    isPrivate: false

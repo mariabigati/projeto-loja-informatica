@@ -41,4 +41,9 @@ export class Cliente extends Pessoa {
     return new Cliente(nome, cpf, email, dataNasc, id);
   }
 
+  public mostrarDados(): string {
+    console.log(`nome mostrar dados cliente model: ${this._nome}`);
+    return `nome: ${this._nome}, cpf: ${this._cpf} email: ${this._email}`;
+  }
+
 }

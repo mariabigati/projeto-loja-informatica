@@ -69,6 +69,10 @@ export class Vendedor extends Pessoa {
     return new Vendedor(nome, cpf, email, cargo, dataNasc, dataAdmissao, id);
   }
 
+  public mostrarDados(): string {
+    return `nome: ${this.Nome}, cpf: ${this.Cpf} email: ${this.Email}`;
+  }
+
   private _validarDataAdm(value: string): void {
     const regex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
 
@@ -93,4 +97,6 @@ export class Vendedor extends Pessoa {
       throw new Error("O cargo não deve exceder 100 caractéres");
     }
   }
+
+  
 }
