@@ -2,7 +2,7 @@ import { RowDataPacket } from "mysql2";
 export interface IProduto extends RowDataPacket {
   id?: number;
   idCategoria?: number;
-  nomeProd?: string;
+  nomeProduto?: string;
   valor?: number;
   dataCad?: Date;
 }
@@ -10,7 +10,7 @@ export interface IProduto extends RowDataPacket {
 export class Produto {
   private _id?: number;
   private _idCategoria: number = 0;
-  private _nomeProd: string = "";
+  private _nomeProduto: string = "";
   private _valor: number = 0;
   private _dataCad?: Date;
 
@@ -32,7 +32,7 @@ export class Produto {
   }
 
   public get NomeProduto(): string {
-    return this._nomeProd;
+    return this._nomeProduto;
   }
 
   public get ValorProduto(): number {
@@ -47,7 +47,7 @@ export class Produto {
 
   public set NomeProduto(value: string){
     this._validarNome(value);
-    this._nomeProd = value;
+    this._nomeProduto = value;
   }
 
   public set ValorProduto(value: number) {
