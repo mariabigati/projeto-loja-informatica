@@ -6,14 +6,23 @@ import { Cliente } from "../models/cliente.model";
 
 export class ClienteRepository {
     async findAll(): Promise<string[]> {
-    const clientes = await db.execute("SELECT * FROM clientes;");
+
+    const [rows] = await db.execute("SELECT * FROM clientes;");
+
+    const clientes = rows as any[];
+
+    if(!clientes || clientes.length === 0) {
+        throw new Error("Clientes não encontrados!")
+    }
+
     return clientes.map((cliente: any) => {
       const novoCliente = new Cliente(
-        cliente.Nome,
-        cliente.Cpf,
-        cliente.Email,
-        cliente.DataNasc,
+        cliente.nomeCliente,
+        cliente.cpfCliente,
+        cliente.emailCliente,
+        cliente.dataNasc,
       );
+
       return novoCliente.mostrarDados();
     });
   }

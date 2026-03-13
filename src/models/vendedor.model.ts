@@ -2,7 +2,7 @@ import { Pessoa } from "./pessoa.model";
 
 export class Vendedor extends Pessoa {
   private _id?: number;
-  private _dataAdmissao: string = "";
+  private _dataAdmissao!: Date;
   private _cargo: string = "";
 
   constructor(
@@ -10,8 +10,8 @@ export class Vendedor extends Pessoa {
     cpf: string,
     email: string,
     cargo: string,
-    dataNasc: string,
-    dataAdmissao: string,
+    dataNasc: Date,
+    dataAdmissao: Date,
     id?: number,
   ) {
     super(nome, cpf, email, dataNasc);
@@ -24,7 +24,7 @@ export class Vendedor extends Pessoa {
     return this._id;
   }
 
-  public get DataAdmissao(): string {
+  public get DataAdmissao(): Date {
     return this._dataAdmissao;
   }
 
@@ -36,7 +36,7 @@ export class Vendedor extends Pessoa {
     this._id = value;
   }
 
-  public set DataAdmissao(value: string) {
+  public set DataAdmissao(value: Date) {
     this._validarDataAdm(value);
     this._dataAdmissao = value;
   }
@@ -50,9 +50,9 @@ export class Vendedor extends Pessoa {
     nome: string,
     cpf: string,
     email: string,
-    cargo: string, 
-    dataNasc: string,
-    dataAdmissao: string
+    cargo: string,
+    dataNasc: Date,
+    dataAdmissao: Date,
   ): Vendedor {
     return new Vendedor(nome, cpf, email, cargo, dataNasc, dataAdmissao);
   }
@@ -61,35 +61,37 @@ export class Vendedor extends Pessoa {
     nome: string,
     cpf: string,
     email: string,
-    cargo: string, 
-    dataNasc: string,
-    dataAdmissao: string,
+    cargo: string,
+    dataNasc: Date,
+    dataAdmissao: Date,
     id: number,
   ): Vendedor {
     return new Vendedor(nome, cpf, email, cargo, dataNasc, dataAdmissao, id);
   }
 
   public mostrarDados(): string {
-    return `nome: ${this.Nome}, cpf: ${this.Cpf} email: ${this.Email}`;
+    return `Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Cargo: ${this._cargo} Data de Nascimento: ${this._dataNasc}, Data de Admissão: ${this._dataAdmissao}`;
   }
 
-  private _validarDataAdm(value: string): void {
-    const regex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/;
-
-    if (!value || !regex.test(value.toLowerCase().trim())) {
+  private _validarDataAdm(value: Date): void {
+    if (!value) {
       throw new Error("Por favor, envie uma data de admissão válida!");
     }
     const dataAdmAno = new Date(value).getFullYear();
 
     if (dataAdmAno < 2017) {
       throw new Error(
-        "Não se deve cadastrar um usuário antes da fundação da empresa!",
+        "Não se deve cadastrar um usuário antes da fundação da empresa! (2017)",
       );
     }
   }
 
   private _validarCargo(value: string): void {
-    if (!value || value.trim().length < 3) {
+    if (!value) {
+      throw new Error("Por favor, envie um cargo.");
+    }
+
+    if (value.trim().length < 3) {
       throw new Error("O cargo deve ter ao menos 3 caractéres");
     }
 
@@ -97,6 +99,4 @@ export class Vendedor extends Pessoa {
       throw new Error("O cargo não deve exceder 100 caractéres");
     }
   }
-
-  
 }

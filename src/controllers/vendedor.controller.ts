@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { ClienteService } from "../services/cliente.service";
+import { VendedorService } from "../services/vendedor.service";
 
-export class ClienteController {
-  constructor(private _service = new ClienteService()) {}
+export class VendedorController {
+  constructor(private _service = new VendedorService()) {}
 
   selecionar = async (req: Request, res: Response) => {
     try {
@@ -12,24 +12,24 @@ export class ClienteController {
       }
 
       if (id) {
-        const clientes = await this._service.selecionarUm(id);
-        if (clientes.length < 1) {
+        const vendedores = await this._service.selecionarUm(id);
+        if (vendedores.length < 1) {
           res
             .status(200)
-            .json({ message: "Nenhum cliente encontrado com este ID." });
+            .json({ message: "Nenhum vendedor encontrado com este ID." });
         }
         res
           .status(200)
-          .json({ message: "Cliente encontrado com sucesso!", data: clientes });
+          .json({ message: "Vendedor encontrado com sucesso!", data: vendedores });
       }
-      const clientes = await this._service.selecionarTodos();
-      if (clientes.length < 1) {
+      const vendedores = await this._service.selecionarTodos();
+      if (vendedores.length < 1) {
         res.status(200).json({ message: "Nenhum registro encontrado." });
       }
 
       res
         .status(200)
-        .json({ message: "Clientes encontrados com sucesso!", data: clientes });
+        .json({ message: "Vendedores encontrados com sucesso!", data: vendedores });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(500).json({
@@ -46,18 +46,20 @@ export class ClienteController {
 
   inserir = async (req: Request, res: Response) => {
     try {
-      const { nome, cpf, email, dataNasc } = req.body;
-      const novoCliente = await this._service.inserir(
+      const { nome, cpf, email, cargo, dataNasc, dataAdmissao } = req.body;
+      const novoVendedor = await this._service.inserir(
         nome,
         cpf,
         email,
+        cargo,
         dataNasc,
+        dataAdmissao
       );
       res
         .status(201)
         .json({
-          message: "Cliente cadastrado com sucesso!",
-          data: novoCliente,
+          message: "Vendedor cadastrado com sucesso!",
+          data: novoVendedor,
         });
     } catch (error: unknown) {
       console.error(error);
@@ -76,7 +78,7 @@ export class ClienteController {
 
   alterar = async (req: Request, res: Response) => {
     try {
-      const {  nome, cpf, email, dataNasc } = req.body;
+      const {  nome, cpf, email, cargo, dataNasc, dataAdmissao } = req.body;
       const id = Number(req.query.id);
       const verificarId = await this._service.selecionarUm(id);
       if (verificarId.length < 1) {
@@ -84,16 +86,18 @@ export class ClienteController {
           .status(200)
           .json({ message: "Nenhum registro encontrado com esse ID." });
       }
-      const alterarCliente = await this._service.alterar(
+      const alterarVendedor = await this._service.alterar(
         id,
         nome,
         cpf,
         email,
-        dataNasc
+        cargo,
+        dataNasc,
+        dataAdmissao
       );
       res.status(200).json({
-        message: "Dados do cliente alterados com sucesso!",
-        data: alterarCliente,
+        message: "Dados do vendedor alterados com sucesso!",
+        data: alterarVendedor,
       });
     } catch (error: unknown) {
       console.error(error);
@@ -122,7 +126,7 @@ export class ClienteController {
       const deletarAluno = await this._service.deletar(id);
       res
         .status(200)
-        .json({ message: "Cliente excluído com sucesso!", data: deletarAluno });
+        .json({ message: "Vendedor excluído com sucesso!", data: deletarAluno });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(500).json({

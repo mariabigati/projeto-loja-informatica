@@ -7,7 +7,7 @@ export class Cliente extends Pessoa {
     nome: string,
     cpf: string,
     email: string,
-    dataNasc: string,
+    dataNasc: Date,
     id?: number,
   ) {
     super(nome, cpf, email, dataNasc);
@@ -26,7 +26,7 @@ export class Cliente extends Pessoa {
     nome: string,
     cpf: string,
     email: string,
-    dataNasc: string,
+    dataNasc: Date,
   ): Cliente {
     return new Cliente(nome, cpf, email, dataNasc);
   }
@@ -35,15 +35,14 @@ export class Cliente extends Pessoa {
     nome: string,
     cpf: string,
     email: string,
-    dataNasc: string,
+    dataNasc: Date,
     id: number,
   ): Cliente {
     return new Cliente(nome, cpf, email, dataNasc, id);
   }
 
   public mostrarDados(): string {
-    console.log(`nome mostrar dados cliente model: ${this._nome}`);
-    return `nome: ${this._nome}, cpf: ${this._cpf} email: ${this._email}`;
+     return `Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Data de Nascimento: ${this._dataNasc}`;;
   }
 
 }
