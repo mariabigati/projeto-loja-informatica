@@ -20,14 +20,14 @@ collection:
         meta:
           id: req_f0340da97aa7499fa07b57d88900d00f
           created: 1772798384335
-          modified: 1773323759969
+          modified: 1773403197896
           isPrivate: false
           description: ""
           sortKey: -1772798388294
         method: GET
         parameters:
           - name: id
-            value: "1"
+            value: ""
             description: ""
             disabled: false
         headers:
@@ -48,7 +48,7 @@ collection:
         meta:
           id: req_6b3faa4603b743eca9e4debbc8a8d7eb
           created: 1772798397674
-          modified: 1773322773590
+          modified: 1773402926391
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -58,10 +58,9 @@ collection:
           text: |-
             {
             	"nome" : "Mwa",
+            	"cpf" : "12345678912",
             	"email": "mari@mari.com",
-            	"matricula": "MATRICULA1",
-            	"curso": "AAA",
-            	"mediaFinal": 0
+            	"dataNasc": "2000-10-20"
             }
         headers:
           - name: Content-Type
@@ -83,7 +82,7 @@ collection:
         meta:
           id: req_81248ee9f37144f7890562a3ac7cfa4e
           created: 1772798411450
-          modified: 1773322777818
+          modified: 1773403168852
           isPrivate: false
           description: ""
           sortKey: -1772798388094
@@ -93,10 +92,9 @@ collection:
           text: |-
             {
             	"nome" : "Wagner Moura",
+            	"cpf": "12345678912",
             	"email": "email@algo.com",
-            	"matricula": "29JFMAER95",
-            	"curso": "DES-MH3",
-            	"mediaFinal": 5
+            	"dataNasc": "2000-12-12"
             }
         parameters:
           - name: id
@@ -123,14 +121,14 @@ collection:
         meta:
           id: req_f43dd070f6444331b42534c3beda85fe
           created: 1772798423369
-          modified: 1773322781625
+          modified: 1773403190048
           isPrivate: false
           description: ""
           sortKey: -1772798387994
         method: DELETE
         parameters:
           - name: id
-            value: "2"
+            value: ""
             description: ""
             disabled: false
         headers:
@@ -148,18 +146,18 @@ collection:
           rebuildPath: true
   - name: Vendedores
     meta:
-      id: fld_7f2eafd5b46c4365922a0c31d4647840
-      created: 1772798575651
-      modified: 1773322741324
-      sortKey: -1772495352257.5
+      id: fld_c05dd811abf641138176816f97f68158
+      created: 1773403225694
+      modified: 1773403225694
+      sortKey: -1772646866358.25
       description: ""
     children:
-      - url: localhost:8000/professores
+      - url: localhost:8000/vendedores
         name: SELECT
         meta:
-          id: req_7a1ba73987314d6984eb0f52592dd389
-          created: 1772798575656
-          modified: 1772800948155
+          id: req_dd1067b2aeb245738c28abb3c6118231
+          created: 1773403225697
+          modified: 1773404675228
           isPrivate: false
           description: ""
           sortKey: -1772798388294
@@ -182,12 +180,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: localhost:8000/professores
+      - url: localhost:8000/vendedores
         name: INSERT
         meta:
-          id: req_dc2da27d9da14163bdd1b11724aaec37
-          created: 1772798575661
-          modified: 1772801159800
+          id: req_29691a5a445e452d8a1a23bdc5384b45
+          created: 1773403225701
+          modified: 1773404728472
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -196,10 +194,12 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome" : "Izaias",
-            	"email": "Izaias@izaiasgmail.com",
-            	"disciplina": "PBE-2",
-            	"cargaHoraria": 0
+            	"nome" : "Mwa",
+            	"cpf" : "12345678912",
+            	"email": "mari@mari.com",
+            	"cargo": "Vendedor Sênior",
+            	"dataNasc": "2000-10-20",
+            	"dataAdmissao": "2017-10-29"
             }
         headers:
           - name: Content-Type
@@ -216,12 +216,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: localhost:8000/professores
+      - url: localhost:8000/vendedores
         name: UPDATE
         meta:
-          id: req_fcbb737c9fed46d8b973dd0fc5e88632
-          created: 1772798575667
-          modified: 1772801005807
+          id: req_ebe29226d2ca40ffbec11bac5fde9b77
+          created: 1773403225704
+          modified: 1773405714893
           isPrivate: false
           description: ""
           sortKey: -1772798388094
@@ -230,10 +230,12 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome" : "",
-            	"email": "",
-            	"disciplina": "",
-            	"cargaHoraria": 1
+            	"nome" : "Jurema",
+            	"cpf" : "12345678912",
+            	"email": "jurema@gmail.com",
+            	"cargo": "Vendedor Sênior",
+            	"dataNasc": "2000-10-20",
+            	"dataAdmissao": "2017-02-02"
             }
         parameters:
           - name: id
@@ -255,19 +257,156 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: localhost:8000/professores
+      - url: localhost:8000/vendedores
         name: DELETE
         meta:
-          id: req_76b1e7f09c66425aa1de9415f377e278
-          created: 1772798575673
-          modified: 1772800984401
+          id: req_e8a92fc7e7f24906a9b43aab6b3dc1f4
+          created: 1773403225706
+          modified: 1773405724930
           isPrivate: false
           description: ""
           sortKey: -1772798387994
         method: DELETE
         parameters:
           - name: id
-            value: "1"
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Categorias
+    meta:
+      id: fld_f5b90fd925f140af8574c907acddd946
+      created: 1773408110377
+      modified: 1773408110377
+      sortKey: -1772571109307.875
+      description: ""
+    children:
+      - url: localhost:8000/categorias
+        name: SELECT
+        meta:
+          id: req_d296e26fc86e49b9a90d9af440e362ef
+          created: 1773408110379
+          modified: 1773408537867
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: ""
+            description: ""
+            disabled: false
+          - name: nome
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/categorias
+        name: INSERT
+        meta:
+          id: req_04292db2f6774f3cb4d1d3e22a39cb68
+          created: 1773408110382
+          modified: 1773408433260
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Periféricos",
+            	"estaAtivo": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/categorias
+        name: UPDATE
+        meta:
+          id: req_bcbb809732744fda8980586dd2012b0e
+          created: 1773408110385
+          modified: 1773408491956
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome" : "Processadores",
+            	"estaAtivo": 1
+            }
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/categorias
+        name: DELETE
+        meta:
+          id: req_2ef6f62e1cba4c29b328d09c363043eb
+          created: 1773408110388
+          modified: 1773408544144
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "2"
             description: ""
             disabled: false
         headers:
