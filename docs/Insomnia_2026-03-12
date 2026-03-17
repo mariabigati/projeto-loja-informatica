@@ -289,7 +289,7 @@ collection:
     meta:
       id: fld_f5b90fd925f140af8574c907acddd946
       created: 1773408110377
-      modified: 1773408110377
+      modified: 1773657803430
       sortKey: -1772571109307.875
       description: ""
     children:
@@ -362,7 +362,7 @@ collection:
         meta:
           id: req_bcbb809732744fda8980586dd2012b0e
           created: 1773408110385
-          modified: 1773408491956
+          modified: 1773657715096
           isPrivate: false
           description: ""
           sortKey: -1772798388094
@@ -376,7 +376,7 @@ collection:
             }
         parameters:
           - name: id
-            value: "2"
+            value: "3"
             description: ""
             disabled: false
         headers:
@@ -407,6 +407,169 @@ collection:
         parameters:
           - name: id
             value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Produtos
+    meta:
+      id: fld_8d75372b4e734731b43bdd053cfd4e1f
+      created: 1773657826408
+      modified: 1773753405001
+      sortKey: -1772533230782.6875
+      description: ""
+    children:
+      - url: localhost:8000/produtos
+        name: SELECT
+        meta:
+          id: req_29c7a69593674778839e8f113a96ebc7
+          created: 1773657826427
+          modified: 1773657833018
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: ""
+            description: ""
+            disabled: false
+          - name: nome
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/produtos
+        name: INSERT
+        meta:
+          id: req_08a6597ab6674bd4a768f6486e48e00c
+          created: 1773657826433
+          modified: 1773659124727
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: image
+              value: ""
+              fileName: C:\Users\54668448885\Downloads\amdrizen.jpg
+              type: file
+            - name: idCategoria
+              value: "3"
+              description: ""
+              disabled: false
+            - name: nome
+              value: Processador AMD Ryzen 5 5500
+              description: ""
+              disabled: false
+            - name: valor
+              value: "578.99"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/produtos
+        name: UPDATE
+        meta:
+          id: req_788ff584e47e429f934d316df2b026b2
+          created: 1773657826443
+          modified: 1773663741635
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: nome
+              value: EDIFIER Fone Bluetooth 5.1
+              description: ""
+              disabled: false
+            - name: valor
+              value: "169.60"
+              description: ""
+              disabled: false
+            - name: image
+              value: ""
+              description: ""
+              disabled: false
+              fileName: C:\Users\54668448885\Downloads\fone-bluetooth-edifier.jpg
+              type: file
+        parameters:
+          - name: id
+            value: "3"
+            description: ""
+            disabled: false
+          - name: idCategoria
+            value: "1"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/produtos
+        name: DELETE
+        meta:
+          id: req_cfbe1132d21842279491c63d8acd9419
+          created: 1773657826448
+          modified: 1773667518785
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "5"
             description: ""
             disabled: false
         headers:
