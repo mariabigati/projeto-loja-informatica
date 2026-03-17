@@ -10,7 +10,7 @@ export class ProdutoRepository{
         return rows;
     }
 
-    async select(id: number):Promise<IProduto[]> {
+    async findOne(id: number):Promise<IProduto[]> {
         const sql = 'SELECT * FROM produtos WHERE idProduto=?;';
         const values = [id];
         const [rows] = await db.execute<IProduto[]>(sql, values);
@@ -26,16 +26,17 @@ export class ProdutoRepository{
         return rows;
     }
 
-    async create(dados: Omit<IProduto, 'id'>):Promise<ResultSetHeader> {
+    async inserir(dados: Omit<IProduto, 'id'>):Promise<ResultSetHeader> {
         const sql='INSERT INTO produtos (nomeProduto, valorProduto, vinculoImagem, idCategoriaFK) VALUES (?,?,?,?);';
-        const values = [dados._nome, dados._valorProduto, dados._vinculoImagem, dados._idCategoria];
+        const values = [dados._nomeProduto, dados._valorProduto, dados._vinculoImagem, dados._idCategoria];
+        console.log(`INSERT PRODUTO REPO: ${values}`)
         const [rows] = await db.execute<ResultSetHeader>(sql, values);
         return rows;
     } 
 
     async update(id: number, dados: Omit<IProduto, 'id'>):Promise<ResultSetHeader> {
-        const sql='nomeProduto=?, valorProduto=?, vinculoImagem=?, idCategoriaFK=? WHERE idProduto=?;';
-        const values = [dados._nome, dados._valorProduto, dados._vinculoImagem, dados._idCategoria, id];
+        const sql='UPDATE produtos SET nomeProduto=?, valorProduto=?, vinculoImagem=?, idCategoriaFK=? WHERE idProduto=?;';
+        const values = [dados._nomeProduto, dados._valorProduto, dados._vinculoImagem, dados._idCategoria, id];
         const [rows] = await db.execute<ResultSetHeader>(sql, values);
         return rows;
     } 

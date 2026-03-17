@@ -10,7 +10,7 @@ export class ProdutoService {
 
   async selecionarUm(id: number) {
     console.log(id)
-    return await this._repository.select(id);
+    return await this._repository.findOne(id);
   }
 
   async selecionarNome(nome: string) {
@@ -20,12 +20,14 @@ export class ProdutoService {
 
 
   async inserir(nome: string, valor: number, vinculoImagem: string, idCategoria: number) {
+    console.log(`INSERT PRODUTO SERVICE: ${nome}, ${valor}, ${vinculoImagem}, ${idCategoria}`)
     const produto = Produto.inserir(nome, valor, vinculoImagem, idCategoria);
-    return await this._repository.create(produto);
+    return await this._repository.inserir(produto);
   }
 
   async alterar(id: number, nome: string, valor: number, vinculoImagem: string, idCategoria: number) {
-    const produto = Produto.alterar(nome, valor,vinculoImagem, idCategoria, id);
+    const produto = Produto.alterar(nome, valor, vinculoImagem, idCategoria, id);
+    console.log(`ALTERAR PRODUTO SERVICE: ${nome}, ${valor}, ${vinculoImagem}, ${idCategoria}`)
     return await this._repository.update(id, produto);
   }
 

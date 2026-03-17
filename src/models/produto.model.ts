@@ -3,8 +3,8 @@ export interface IProduto extends RowDataPacket {
   id?: number;
   idCategoria?: number;
   nomeProduto?: string;
-  valor?: number;
-  vinculoImg?: string;
+  valorProduto?: number;
+  vinculoImagem?: string;
   dataCad?: Date;
 }
 
@@ -12,19 +12,20 @@ export class Produto {
   private _id?: number;
   private _idCategoria: number = 0;
   private _nomeProduto: string = "";
-  private _valor: number = 0;
-  private _vinculoImg!: string;
+  private _valorProduto: number = 0;
+  private _vinculoImagem!: string;
   private _dataCad?: Date;
 
   constructor(
     nome: string,
-    valor: number,
-    vinculoImg: string,
+    valorProduto: number,
+    vinculoImagem: string,
     idCategoria: number,
     id?: number,
   ) {
     this.NomeProduto = nome;
-    this.ValorProduto = valor;
+    this.ValorProduto = valorProduto;
+    this.VinculoImagem = vinculoImagem;
     this.IdCategoria = idCategoria;
     this._id = id;
   }
@@ -42,11 +43,11 @@ export class Produto {
   }
 
   public get ValorProduto(): number {
-    return this._valor;
+    return this._valorProduto;
   }
 
-  public get VinculoImg(): string {
-    return this._vinculoImg;
+  public get VinculoImagem(): string {
+    return this._vinculoImagem;
   }
 
   public get DataCad(): Date | undefined {
@@ -60,11 +61,11 @@ export class Produto {
 
   public set ValorProduto(value: number) {
     this._validarValor(value);
-    this._valor = value;
+    this._valorProduto = value;
   }
 
-  public set VinculoImg(value: string) {
-    this._vinculoImg = value;
+  public set VinculoImagem(value: string) {
+    this._vinculoImagem = value;
   }
 
   public set IdCategoria(value: number) {
@@ -78,21 +79,21 @@ export class Produto {
 
   public static inserir(
     nome: string,
-    valor: number,
-    vinculoImg: string,
+    valorProduto: number,
+    vinculoImagem: string,
     idCategoria: number,
   ): Produto {
-    return new Produto(nome, valor, vinculoImg, idCategoria);
+    return new Produto(nome, valorProduto, vinculoImagem, idCategoria);
   }
 
   public static alterar(
     nome: string,
-    valor: number,
-    vinculoImg: string,
+    valorProduto: number,
+    vinculoImagem: string,
     idCategoria: number,
     id: number,
   ) {
-    return new Produto(nome, valor, vinculoImg, idCategoria, id);
+    return new Produto(nome, valorProduto, vinculoImagem, idCategoria, id);
   }
 
   private _validarNome(value: string): void {
@@ -107,12 +108,12 @@ export class Produto {
 
   private _validarValor(value: number): void {
     if (!value || isNaN(value)) {
-      throw new Error("O valor do produto deve ser um número.");
+      throw new Error("O valorProduto do produto deve ser um número.");
     }
 
     if (value <= 0) {
       throw new Error(
-        "O valor do produto deve ser um número positivo e/ou maior que 0.",
+        "O valorProduto do produto deve ser um número positivo e/ou maior que 0.",
       );
     }
   }

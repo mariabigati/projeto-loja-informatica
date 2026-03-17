@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { ProdutoService } from "../services/produto.service";
+import path from "path";
+import fs from "fs";
 
 export class ProdutoController {
   constructor(private _service = new ProdutoService()) {}
@@ -8,7 +10,6 @@ export class ProdutoController {
     try {
       const id = Number(req.query.id);
       const nome = String(req.query.nome);
-      const ordem = String(req.query.ordem);
 
       if (isNaN(id)) {
         res.status(200).json({ message: "Valor de ID inválido." });
@@ -58,25 +59,32 @@ export class ProdutoController {
     }
   };
 
-  criarProduto = async (req: Request, res: Response) => {
+  inserir = async (req: Request, res: Response) => {
     try {
       const { nome, valor } = req.body;
-      const idCategoria = Number(req.query.idCategoria);
+      const idCategoria = Number(req.body.idCategoria);
 
-        if (!req.file) {
+      if (!req.file) {
         return res.status(400).json({
           message:
             "Arquivo não enviado! É necessário enviar a imagem do produto!",
         });
       }
-      const resultado = await this._service.inserir(nome, valor, req.file.filename, idCategoria);
-      res
-        .status(201)
-        .json({ message: "Produto criado com sucesso!", resultado: resultado, file: {
+      const resultado = await this._service.inserir(
+        nome,
+        valor,
+        req.file.filename,
+        idCategoria,
+      );
+      res.status(201).json({
+        message: "Produto criado com sucesso!",
+        resultado: resultado,
+        file: {
           filename: req.file.filename,
           size: req.file.size,
-          mimetype: req.file.mimetype, }});
-
+          mimetype: req.file.mimetype,
+        },
+      });
     } catch (error: unknown) {
       console.error(error);
       if (error instanceof Error) {
@@ -92,20 +100,36 @@ export class ProdutoController {
     }
   };
 
-  editarProduto = async (req: Request, res: Response) => {
+  alterar = async (req: Request, res: Response) => {
     try {
       const { nome, valor } = req.body;
       const idCategoria = Number(req.query.idCategoria);
       const id = Number(req.query.id);
 
       const produtoSelecionado = await this._service.selecionarUm(id);
+      const nomeImg = produtoSelecionado[0].vinculoImagem;
+
+      const caminhoAtualImg = path.join(
+        __dirname,
+        "../..",
+        "uploads",
+        "images",
+        String(nomeImg),
+      );
+
+      console.log(caminhoAtualImg)
+
+      if (fs.existsSync(caminhoAtualImg)) {
+        fs.unlinkSync(caminhoAtualImg);
+      }
+
       if (produtoSelecionado.length < 1) {
         res
           .status(200)
           .json({ message: "Nenhum produto encontrado com este ID." });
       }
 
-       if (!req.file) {
+      if (!req.file) {
         return res.status(400).json({
           message:
             "Arquivo não enviado! É necessário enviar a imagem do produto!",
@@ -119,7 +143,9 @@ export class ProdutoController {
         req.file.filename,
         idCategoria,
       );
-      res.status(200).json({ message: "Produto alterado com sucesso!", data: resultado });
+      res
+        .status(200)
+        .json({ message: "Produto alterado com sucesso!", data: resultado });
     } catch (error: unknown) {
       console.error(error);
       if (error instanceof Error) {
@@ -134,19 +160,38 @@ export class ProdutoController {
       });
     }
   };
-  deletarProduto = async (req: Request, res: Response) => {
+  deletar = async (req: Request, res: Response) => {
     try {
       const id = Number(req.query.id);
-      console.log(id);
       const produtoSelecionado = await this._service.selecionarUm(id);
       if (produtoSelecionado.length < 1) {
         res
           .status(200)
           .json({ message: "Nenhum registro encontrado com esse ID." });
       }
+      
+      const nomeImg = produtoSelecionado[0].vinculoImagem;
+
+      const caminhoAtualImg = path.join(
+        __dirname,
+        "../..",
+        "uploads",
+        "images",
+        String(nomeImg),
+      );
+
+      console.log(caminhoAtualImg)
+
+      if (fs.existsSync(caminhoAtualImg)) {
+        fs.unlinkSync(caminhoAtualImg);
+      }
+      
       const resultado = await this._service.deletar(id);
       console.log(resultado);
-      res.status(200).json({message: "Produto deletado com sucesso!", resultado: resultado });
+      res.status(200).json({
+        message: "Produto deletado com sucesso!",
+        resultado: resultado,
+      });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(500).json({
