@@ -23,6 +23,7 @@ export class VendedorRepository {
             vendedor.cargoVendedor,
             vendedor.dataNasc,
             vendedor.dataAdmissao,
+            vendedor.idVendedor
           );
     
           return novoVendedor.mostrarDados();
@@ -46,6 +47,7 @@ async findOne(id: number): Promise<string> {
         row.cargoVendedor,
         row.dataNasc,
         row.dataAdmissao,
+        row.idVendedor
     );
     return vendedor.mostrarDados();
 }

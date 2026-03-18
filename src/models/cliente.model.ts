@@ -42,7 +42,7 @@ export class Cliente extends Pessoa {
   }
 
   public mostrarDados(): string {
-     return `Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Data de Nascimento: ${this._dataNasc}`;;
+     return `ID: ${this._id} Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Data de Nascimento: ${this._dataNasc}`;
   }
 
 }

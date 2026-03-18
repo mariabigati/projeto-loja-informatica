@@ -70,7 +70,7 @@ export class Vendedor extends Pessoa {
   }
 
   public mostrarDados(): string {
-    return `Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Cargo: ${this._cargo} Data de Nascimento: ${this._dataNasc}, Data de Admissão: ${this._dataAdmissao}`;
+    return `ID: ${this._id} Nome: ${this._nome}, CPF: ${this._cpf} E-mail: ${this._email}, Cargo: ${this._cargo} Data de Nascimento: ${this._dataNasc}, Data de Admissão: ${this._dataAdmissao}`;
   }
 
   private _validarDataAdm(value: Date): void {

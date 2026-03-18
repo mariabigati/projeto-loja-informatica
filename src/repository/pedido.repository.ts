@@ -28,14 +28,14 @@ export class PedidoRepository{
 
     async create(dados: Omit<IPedido, 'id'>):Promise<ResultSetHeader> {
         const sql='INSERT INTO pedidos (idClienteFK, idVendedorFK) VALUES (?,?);';
-        const values = [dados._nome, dados._estaAtivo];
+        const values = [dados._idCliente, dados._idVendedor];
         const [rows] = await db.execute<ResultSetHeader>(sql, values);
         return rows;
     } 
 
     async update(id: number, dados: Omit<IPedido, 'id'>):Promise<ResultSetHeader> {
         const sql='UPDATE pedidos SET idCliente =?, idVendedor=? WHERE idPedido=?;';
-        const values = [dados._nome, dados._estaAtivo, id];
+        const values = [dados._idCliente, dados._idVendedor, id];
         const [rows] = await db.execute<ResultSetHeader>(sql, values);
         return rows;
     } 

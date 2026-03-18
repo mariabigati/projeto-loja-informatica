@@ -5,7 +5,7 @@ import { ResultSetHeader } from "mysql2";
 export class ProdutoRepository{
     async findAll():Promise<IProduto[]> {
         const [rows] = await db.execute<IProduto[]>(
-            'SELECT * FROM produtos'
+            'SELECT * FROM produtos;'
         )
         return rows;
     }

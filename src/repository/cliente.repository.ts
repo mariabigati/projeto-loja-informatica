@@ -21,6 +21,7 @@ export class ClienteRepository {
         cliente.cpfCliente,
         cliente.emailCliente,
         cliente.dataNasc,
+        cliente.idCliente
       );
 
       return novoCliente.mostrarDados();
@@ -41,7 +42,8 @@ export class ClienteRepository {
         row.nomeCliente,
         row.cpfCliente,
         row.emailCliente,
-        row.dataNasc
+        row.dataNasc,
+        row.idCliente
     );
     return cliente.mostrarDados();
   }

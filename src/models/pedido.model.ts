@@ -12,8 +12,8 @@ export class Pedido {
   private _idVendedor!: number;
 
   constructor(idCliente: number, idVendedor: number, id?: number) {
-    this.IdCliente = this._idCliente;
-    this.IdVendedor = this._idVendedor;
+    this.IdCliente = idCliente;
+    this.IdVendedor = idVendedor;
     this._id = id;
   }
 
