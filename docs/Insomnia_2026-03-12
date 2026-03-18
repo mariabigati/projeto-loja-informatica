@@ -48,7 +48,7 @@ collection:
         meta:
           id: req_6b3faa4603b743eca9e4debbc8a8d7eb
           created: 1772798397674
-          modified: 1773402926391
+          modified: 1773834684619
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -57,9 +57,9 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome" : "Mwa",
+            	"nome" : "Maria",
             	"cpf" : "12345678912",
-            	"email": "mari@mari.com",
+            	"email": "maria@email.com",
             	"dataNasc": "2000-10-20"
             }
         headers:
@@ -185,7 +185,7 @@ collection:
         meta:
           id: req_29691a5a445e452d8a1a23bdc5384b45
           created: 1773403225701
-          modified: 1773404728472
+          modified: 1773834705163
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -194,9 +194,9 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome" : "Mwa",
+            	"nome" : "Mario",
             	"cpf" : "12345678912",
-            	"email": "mari@mari.com",
+            	"email": "mario@email.com",
             	"cargo": "Vendedor Sênior",
             	"dataNasc": "2000-10-20",
             	"dataAdmissao": "2017-10-29"
@@ -330,7 +330,7 @@ collection:
         meta:
           id: req_04292db2f6774f3cb4d1d3e22a39cb68
           created: 1773408110382
-          modified: 1773408433260
+          modified: 1773834740241
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -339,7 +339,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome" : "Periféricos",
+            	"nome" : "Processadores",
             	"estaAtivo": 1
             }
         headers:
@@ -435,17 +435,13 @@ collection:
         meta:
           id: req_29c7a69593674778839e8f113a96ebc7
           created: 1773657826427
-          modified: 1773657833018
+          modified: 1773834833877
           isPrivate: false
           description: ""
           sortKey: -1772798388294
         method: GET
         parameters:
           - name: id
-            value: ""
-            description: ""
-            disabled: false
-          - name: nome
             value: ""
             description: ""
             disabled: false
@@ -467,7 +463,7 @@ collection:
         meta:
           id: req_08a6597ab6674bd4a768f6486e48e00c
           created: 1773657826433
-          modified: 1773659124727
+          modified: 1773836960063
           isPrivate: false
           description: ""
           sortKey: -1772798388194
@@ -480,7 +476,7 @@ collection:
               fileName: C:\Users\54668448885\Downloads\amdrizen.jpg
               type: file
             - name: idCategoria
-              value: "3"
+              value: "1"
               description: ""
               disabled: false
             - name: nome
@@ -570,6 +566,274 @@ collection:
         parameters:
           - name: id
             value: "5"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Pedidos
+    meta:
+      id: fld_12810963e99a420ab4e2c8e58e3e446b
+      created: 1773832793939
+      modified: 1773832799600
+      sortKey: -1772514291520.0938
+      description: ""
+    children:
+      - url: localhost:8000/pedidos
+        name: SELECT
+        meta:
+          id: req_f8f55747445f43a2886828e2951e7029
+          created: 1773832793944
+          modified: 1773843383498
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/pedidos
+        name: INSERT
+        meta:
+          id: req_dbfc553a41244a0a87cb96da670efdc8
+          created: 1773832793948
+          modified: 1773832962052
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"idCliente" : 1,
+            	"idVendedor" : 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/pedidos
+        name: UPDATE
+        meta:
+          id: req_e42319061ff543a0a65c091370af5110
+          created: 1773832793953
+          modified: 1773842689829
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"idCliente" : 1,
+            	"idVendedor" : 1
+            }
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/pedidos
+        name: DELETE
+        meta:
+          id: req_70c8b7d9b1154a52acb1a230f7de3790
+          created: 1773832793958
+          modified: 1773832853523
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "5"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Itens Pedido
+    meta:
+      id: fld_376a17a8628f482eb7f4dbb7f965875e
+      created: 1773832816007
+      modified: 1773832818923
+      sortKey: -1772504821888.7969
+      description: ""
+    children:
+      - url: localhost:8000/itensPedidos
+        name: SELECT
+        meta:
+          id: req_2a9698d69e7044598dd27df8231467cf
+          created: 1773832816012
+          modified: 1773833006031
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388294
+        method: GET
+        parameters:
+          - name: id
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/itensPedidos
+        name: INSERT
+        meta:
+          id: req_805c1d5531b34872b377431c1d7256ab
+          created: 1773832816017
+          modified: 1773843351512
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388194
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"idPedido" : 2,
+            	"idProduto": 2,
+            	"quantidade" : 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/itensPedidos
+        name: UPDATE
+        meta:
+          id: req_45ed13b0056440728f498d8e29c33143
+          created: 1773832816022
+          modified: 1773841311879
+          isPrivate: false
+          description: ""
+          sortKey: -1772798388094
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"idPedido" : 1,
+            	"idProduto": 2,
+            	"quantidade" : 3
+            }
+        parameters:
+          - name: id
+            value: "2"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.1
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8000/itensPedidos
+        name: DELETE
+        meta:
+          id: req_71ea08c37f02478f9afdddaf7057fa4c
+          created: 1773832816027
+          modified: 1773841325789
+          isPrivate: false
+          description: ""
+          sortKey: -1772798387994
+        method: DELETE
+        parameters:
+          - name: id
+            value: "2"
             description: ""
             disabled: false
         headers:

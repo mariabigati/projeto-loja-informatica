@@ -26,16 +26,6 @@ export class ProdutoController {
         res.status(200).json({ produtos });
       }
 
-      if (nome) {
-        const produtos = await this._service.selecionarNome(nome);
-        if (produtos.length < 1) {
-          res
-            .status(200)
-            .json({ message: "Nenhum registro encontrado com esse nome." });
-        }
-        console.log(produtos);
-        res.status(200).json({ produtos });
-      }
 
       const produtos = await this._service.selecionarTodos();
       if (produtos.length < 1) {

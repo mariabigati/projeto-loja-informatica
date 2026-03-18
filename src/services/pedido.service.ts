@@ -14,13 +14,14 @@ export class PedidoService {
   }
 
 
-  async criar(idCliente: number, idVendedor: number) {
-    const pedido = Pedido.inserir(idCliente, idVendedor);
+  async criar(idCliente: number, idVendedor: number, valorTotal: number) {
+    const pedido = Pedido.inserir(idCliente, idVendedor, valorTotal);
     return await this._repository.create(pedido);
   }
 
-  async editar(id: number, idCliente: number, idVendedor: number) {
-    const pedido = Pedido.alterar(idCliente, idVendedor, id);
+  async editar(id: number, idCliente: number, idVendedor: number, valorTotal: number) {
+    const pedido = Pedido.alterar(idCliente, idVendedor, valorTotal, id);
+    console.log(pedido);
     return await this._repository.update(id, pedido);
   }
 

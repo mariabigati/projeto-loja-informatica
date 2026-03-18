@@ -13,15 +13,18 @@ export class ItensPedidoService {
     return await this._repository.select(id);
   }
 
-  async criar(idCliente: number, idProduto: number, idVendedor: number) {
-    const pedido = ItensPedido.inserir(idCliente, idProduto, idVendedor);
-    return await this._repository.create(pedido);
+  async criar(idPedido: number, idProduto: number, quantidade: number, valorUnitario: number, subtotalItem: number) {
+
+    const itensPedido = ItensPedido.inserir(idPedido, idProduto, quantidade, valorUnitario, subtotalItem);
+    console.log(itensPedido)
+    return await this._repository.create(itensPedido);
   }
 
-  async editar(id: number, idPedido: number, idProduto: number, quantidade: number) {
-    const itensPedido = ItensPedido.alterar(idPedido, idProduto, quantidade, id);
+  async editar(id: number, idPedido: number, idProduto: number, quantidade: number, valorUnitario: number, subtotalItem: number) {
+    const itensPedido = ItensPedido.alterar(idPedido, idProduto, quantidade, valorUnitario, subtotalItem, id);
     return await this._repository.update(id, itensPedido);
   }
+
 
   async deletar(id:number) {
     return await this._repository.delete(id);

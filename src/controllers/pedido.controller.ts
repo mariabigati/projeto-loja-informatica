@@ -47,7 +47,7 @@ export class PedidoController {
   inserir = async (req: Request, res: Response) => {
     try {
       const { idCliente, idVendedor } = req.body;
-      const novoPedido = await this._service.criar(idCliente, idVendedor);
+      const novoPedido = await this._service.criar(idCliente, idVendedor, 0);
       res.status(201).json({ novoPedido });
     } catch (error: unknown) {
       console.error(error);
@@ -74,7 +74,7 @@ export class PedidoController {
           .status(200)
           .json({ message: "Nenhum registro encontrado com esse ID." });
       }
-      const resultado = await this._service.editar(id, idCliente, idVendedor);
+      const resultado = await this._service.editar(id, idCliente, idVendedor, 0);
       res.status(200).json({ resultado });
     } catch (error: unknown) {
       console.error(error);

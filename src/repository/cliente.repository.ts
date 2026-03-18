@@ -50,12 +50,13 @@ export class ClienteRepository {
 
   async create(dados: Omit<Cliente, "id">): Promise<ResultSetHeader> {
     const sql =
-      "INSERT INTO clientes (nomeCliente, cpfCliente, emailCliente, dataNasc) VALUES (?,?,?,?);";
+      "INSERT INTO clientes (nomeCliente, cpfCliente, emailCliente, dataNasc) VALUES (?,?,?,?,?);";
     const values = [
       dados.Nome,
       dados.Cpf,
       dados.Email,
-      dados.DataNasc
+      dados.DataNasc,
+
     ];
     const [rows] = await db.execute<ResultSetHeader>(sql, values);
     return rows;

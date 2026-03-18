@@ -3,6 +3,7 @@ export interface IPedido extends RowDataPacket {
   id?: number;
   idCliente?: number;
   idVendedor?: number;
+  valorTotal?: number;
   dataPedido?: Date;
 }
 
@@ -10,10 +11,12 @@ export class Pedido {
   private _id?: number;
   private _idCliente!: number;
   private _idVendedor!: number;
+  private _valorTotal?: number;
 
-  constructor(idCliente: number, idVendedor: number, id?: number) {
+  constructor(idCliente: number, idVendedor: number, valorTotal: number, id?: number) {
     this.IdCliente = idCliente;
     this.IdVendedor = idVendedor;
+    this.ValorTotal = valorTotal;
     this._id = id;
   }
 
@@ -29,6 +32,9 @@ export class Pedido {
     return this._idVendedor;
   }
 
+  public get ValorTotal(): number | undefined {
+    return this._valorTotal;
+  }
 
   public set IdCliente(value: number) {
     this._validarId(value);
@@ -44,12 +50,16 @@ export class Pedido {
     this._id = value;
   }
 
-  public static inserir(idCliente: number, idVendedor: number): Pedido {
-    return new Pedido(idCliente, idVendedor);
+   public set ValorTotal(value: number) {
+    this._valorTotal = value;
   }
 
-  public static alterar(idCliente: number, idVendedor: number, id: number) {
-    return new Pedido(idCliente, idVendedor, id);
+  public static inserir(idCliente: number, idVendedor: number, valorTotal: number): Pedido {
+    return new Pedido(idCliente, idVendedor, valorTotal);
+  }
+
+  public static alterar(idCliente: number, idVendedor: number, valorTotal: number, id: number) {
+    return new Pedido(idCliente, idVendedor, valorTotal, id);
   }
 
   private _validarId(value: number): void {
